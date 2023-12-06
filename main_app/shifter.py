@@ -13,7 +13,13 @@ def open_app():
     driver.find_element('xpath', value='//android.widget.TextView[@resource-id=\"com.doordash.driverapp:id/textView_prism_button_title\" and @text=\"Iniciar sesión\"]').click()
     sleep(14)
     driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Navegar hacia arriba"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.view.View[4]').click()
+    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"/android.widget.TextView/android.widget.Button and @text=\"Iniciar sesión con correo electrónico y contraseña\"]').click()
+    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
+    #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
+    #driver.find_element("xpath", value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
+    #driver.find_element('xpath', value='//android.widget.Button[@text="Continue"]').click()
+    #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.view.View[3]').click()
+
     #except Exception as e:
         # Si ocurre algún error, captura la excepción e imprime un mensaje
         #print(f"Ocurrió un error: {e}")
