@@ -1,20 +1,24 @@
-import time
+from time import sleep
 from app_interface.app_ui import LoginApp
 from app_run.app_handler import start_app
 
-# Función para realizar una operación en la calculadora una sola vez
+# Ejecucion principal del codigo
 def open_app():
-    driver = start_app()  # Iniciar la aplicación
+    # Iniciar la aplicación
+    driver = start_app()  
 
     #try:
-    time.sleep(8)
+    sleep(8)
     #driver.find_element("id", value="com.doordash.driverapp:id/sign_in").click()
     driver.find_element('xpath', value='//android.widget.TextView[@resource-id=\"com.doordash.driverapp:id/textView_prism_button_title\" and @text=\"Iniciar sesión\"]').click()
+    sleep(14)
+    driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Navegar hacia arriba"]').click()
+    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.view.View[4]').click()
     #except Exception as e:
         # Si ocurre algún error, captura la excepción e imprime un mensaje
         #print(f"Ocurrió un error: {e}")
 
-# Función que se ejecuta al hacer clic en el botón de iniciar
+# Función para la ejecucion del codigo
 def log_in():
     open_app()
 
