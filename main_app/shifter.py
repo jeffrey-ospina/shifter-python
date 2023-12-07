@@ -9,10 +9,35 @@ def open_app():
 
     #try:
     sleep(8)
-    #driver.find_element("id", value="com.doordash.driverapp:id/sign_in").click()
-    driver.find_element('xpath', value='//android.widget.TextView[@resource-id=\"com.doordash.driverapp:id/textView_prism_button_title\" and @text=\"Iniciar sesión\"]').click()
-    sleep(14)
-    driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Navegar hacia arriba"]').click()
+
+    omitir = driver.find_element('xpath', value='//android.widget.TextView[@resource-id="com.mercadolibre:id/andes_button_text" and @text="Omitir"]')
+    if omitir:
+        print("Omitiendo pantalla")
+        omitir.click()
+    else:
+        print("No se ha podido encontrar el boton de omitir")
+
+
+    sleep(8)
+    menu = driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Menú"]')
+    if menu:
+        print("Se ha encontrado el menú")
+        menu.click()
+    else:
+        print("No se ha podido encontrar el menú")
+
+    sleep(6)
+    ingresar = driver.find_element("id", value="com.mercadolibre:id/profile_drawer_action_btn")
+    if ingresar:
+        print("Se ha encontrado el botón de ingreso a mi perfil")
+        ingresar.click()
+    else:
+        print("No se ha podido encontrar el botón de ingreso a mi perfil")
+
+    sleep(6)
+    buscar = driver.find_element("xpath", value='//*[contains(@text, "Buscar")]')
+
+
     #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"/android.widget.TextView/android.widget.Button and @text=\"Iniciar sesión con correo electrónico y contraseña\"]').click()
     #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
     #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()

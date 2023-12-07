@@ -8,8 +8,8 @@ def start_app():
         "appium:platformVersion": "13.0",
         "appium:deviceName": "emu64x",
         "appium:automationName": "UiAutomator2",
-        "appium:appPackage": "com.doordash.driverapp",
-        "appium:appActivity": "com.doordash.driverapp.ui.login.LauncherActivity"
+        "appium:appPackage": "com.mercadolibre",
+        "appium:appActivity": "com.mercadolibre.splash.SplashActivity"
     }
         
     options = UiAutomator2Options().load_capabilities(driver_config)
