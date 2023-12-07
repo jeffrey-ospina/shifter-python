@@ -9,10 +9,22 @@ def open_app():
 
     #try:
     sleep(8)
-    #driver.find_element("id", value="com.doordash.driverapp:id/sign_in").click()
-    driver.find_element('xpath', value='//android.widget.TextView[@resource-id=\"com.doordash.driverapp:id/textView_prism_button_title\" and @text=\"Iniciar sesión\"]').click()
-    sleep(14)
-    driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Navegar hacia arriba"]').click()
+    inciar = driver.find_element("id", value="com.doordash.driverapp:id/sign_in")
+    if inciar:
+        print('Se ha iniciado correctamente')
+        inciar.click()
+    else:
+        print('No se pudo iniciar la sesión')
+    
+    sleep(4)
+    #driver.find_element('xpath', value='//android.widget.TextView[@resource-id=\"com.doordash.driverapp:id/textView_prism_button_title\" and @text=\"Iniciar sesión\"]').click()
+    #sleep(14)
+
+
+    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"com.doordash.driverapp:id/guided-phone-form\"]/android.view.View[2]').click()
+    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.view.View[2]').click()
+    #driver.find_element('xpath', value='//android.widget.EditText[@resource-id="FieldWrapper-1"]').click()
+    #driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Navegar hacia arriba"]').click()
     #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"/android.widget.TextView/android.widget.Button and @text=\"Iniciar sesión con correo electrónico y contraseña\"]').click()
     #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
     #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
