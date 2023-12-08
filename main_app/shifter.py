@@ -10,10 +10,10 @@ def open_app():
     #try:
     sleep(8)
 
-    omitir = driver.find_element('xpath', value='//android.widget.TextView[@resource-id="com.mercadolibre:id/andes_button_text" and @text="Omitir"]')
-    if omitir:
+    omitir_1 = driver.find_element('xpath', value='//android.widget.TextView[@resource-id="com.mercadolibre:id/andes_button_text" and @text="Omitir"]')
+    if omitir_1:
         print("Omitiendo pantalla")
-        omitir.click()
+        omitir_1.click()
     else:
         print("No se ha podido encontrar el boton de omitir")
 
@@ -35,16 +35,28 @@ def open_app():
         print("No se ha podido encontrar el botón de ingreso a mi perfil")
 
     sleep(6)
-    buscar = driver.find_element("xpath", value='//*[contains(@text, "Buscar")]')
+    omitir_2 = driver.find_element("id", value="com.google.android.gms:id/cancel")
+    if omitir_2:
+        print("Se ha encontrado el botón de omitir")
+        omitir_2.click()
+    else:
+        print("No se ha podido encontrar el botón de omitir")
 
+    sleep(6)
+    correo = driver.find_element('xpath', value='//android.widget.EditText[@resource-id="com.mercadolibre:id/andes_textfield_edittext"]')
+    if correo:
+        print("Ingresando correo")
+        correo.send_keys('jeffreyospina16@gmail.com')
+    else:
+        print("No se ha podido encontrar el campo para ingresar el correo")
 
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"/android.widget.TextView/android.widget.Button and @text=\"Iniciar sesión con correo electrónico y contraseña\"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
-    #driver.find_element("xpath", value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
-    #driver.find_element('xpath', value='//android.widget.Button[@text="Continue"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.view.View[3]').click()
-
+    sleep(6)
+    continuar = driver.find_element('xpath', value='//android.widget.TextView[@resource-id="com.mercadolibre:id/andes_button_text" and @text="Continuar"]')
+    if continuar: 
+        print("Continuando con el proceso")
+        continuar.click()
+    else:
+        print("No se ha podido encontrar el botón de continuar")
     #except Exception as e:
         # Si ocurre algún error, captura la excepción e imprime un mensaje
         #print(f"Ocurrió un error: {e}")
