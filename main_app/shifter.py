@@ -9,7 +9,8 @@ def open_app():
 
     #try:
     sleep(8)
-    inciar = driver.find_element("id", value="com.doordash.driverapp:id/sign_in")
+    #inciar = driver.find_element("id", value="com.doordash.driverapp:id/sign_in")
+    inciar = driver.find_element("xpath", value='//android.widget.TextView[@resource-id="com.doordash.driverapp:id/textView_prism_button_title" and @text="Iniciar sesión"]')
     if inciar:
         print('Se ha iniciado correctamente')
         inciar.click()
@@ -17,8 +18,8 @@ def open_app():
         print('No se pudo iniciar la sesión')
     
     sleep(14)
-    login = driver.find_element("xpath", value='//android.view.View[contains(@text, "Iniciar sesión con correo electrónico y contraseña")]')
-    if login:
+    login = driver.find_element("xpath", value='//android.view.View[@resource-id="guided-phone-form"]/android.view.View/android.widget.Button')
+    if login:             #//android.view.View[@resource-id="guided-phone-form"]/android.view.View[1]
         print('Se ha encontrado el elemento de logueo')
         login.click()
     else:
@@ -48,3 +49,8 @@ def log_in():
 
 interface = LoginApp(log_in, lambda: None)
 interface.start()
+
+
+
+#//android.widget.Button[@text="Iniciar sesión con correo electrónico y contraseña"]
+#//android.view.View[@resource-id="guided-phone-form"]/android.view.View[3]

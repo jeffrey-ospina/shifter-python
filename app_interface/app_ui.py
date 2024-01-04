@@ -4,7 +4,7 @@ import customtkinter as ctk
 ctk.set_appearance_mode("light")
 
 # Escoger el color del tema de la ventana
-ctk.set_default_color_theme("green")
+ctk.set_default_color_theme("blue")
 
 # Crear ventana con botón para iniciar y detener la calculadora
 class LoginApp:
@@ -18,7 +18,7 @@ class LoginApp:
         self.email_entry= ctk.CTkEntry(self.app, placeholder_text="Correo")
         self.email_entry.grid(column=0,
                             row=0,
-                            padx=5,
+                            padx=15,
                             pady=5,
                             ipadx=10)
 
@@ -26,7 +26,7 @@ class LoginApp:
         self.password_entry= ctk.CTkEntry(self.app, placeholder_text="Clave")
         self.password_entry.grid(column=0,
                                 row=1,
-                                padx=5,
+                                padx=15,
                                 pady=5,
                                 ipadx=10)
 
@@ -40,34 +40,49 @@ class LoginApp:
                                         border_width=1,
                                         command=log_in)
         self.start_button.grid(column=1,
-                            row=0,
-                            sticky=ctk.E,
-                            padx=5,
+                            row=3,
+                            #sticky=ctk.E,
+                            padx=15,
                             pady=5,
                             ipadx=10)
 
-        self.stop_button = ctk.CTkButton(self.app,
-                                        text="Salir",
-                                        text_color="white",
-                                        hover_color="#ff6363",
-                                        fg_color="#ff0000",
-                                        width=50,
-                                        border_width=1,
-                                        command=log_out)
-        self.stop_button.grid(column=1,
-                            row=1,
-                            padx=5,
+# Boton salir
+        #self.stop_button = ctk.CTkButton(self.app,
+                                        #text="Salir",
+                                        #text_color="white",
+                                        #hover_color="#ff6363",
+                                        #fg_color="#ff0000",
+                                        #width=50,
+                                        #border_width=1,
+                                        #command=log_out)
+        #self.stop_button.grid(column=1,
+                            #row=1,
+                            #padx=15,
+                            #pady=5,
+                            #ipadx=10,)
+
+# Menu desplegable
+        self.option_menu = ctk.CTkOptionMenu(self.app,
+                                    values=["Estados Unidos"])
+        self.option_menu.grid(column=0,
+                            row=2,
+                            padx=15,
                             pady=5,
-                            ipadx=10,)
+                            ipadx=10)
+        self.option_menu.set("Seleccione pais")  # set initial value
 
 # Caja de texto
-        self.textbox = ctk.CTkTextbox(self.app, 
-                                    width=200,
-                                    height=150,
-                                    corner_radius=0)
+        self.textbox = ctk.CTkTextbox(self.app,
+                                    height=80,
+                                    corner_radius=6,
+                                    border_width=1)
         
-        self.textbox.grid(column=0, 
-                        row=2)
+        self.textbox.grid(column=0,
+                        row=4,
+                        columnspan=2,
+                        padx=15,
+                        pady=5,
+                        ipadx=10)
 
     # Obtener valores ingresados
     def get_credentials(self):
