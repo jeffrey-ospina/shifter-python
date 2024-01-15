@@ -1,6 +1,7 @@
 from time import sleep
 from app_interface.app_ui import LoginApp
 from app_run.app_handler import start_app
+from appium.webdriver.common.touch_action import TouchAction
 
 # Ejecucion principal del codigo
 def open_app():
@@ -18,12 +19,17 @@ def open_app():
         print('No se pudo iniciar la sesión')
     
     sleep(14)
-    login = driver.find_element("xpath", value='//android.view.View[@resource-id="guided-phone-form"]/android.view.View/android.widget.Button')
-    if login:             #//android.view.View[@resource-id="guided-phone-form"]/android.view.View[1]
-        print('Se ha encontrado el elemento de logueo')
-        login.click()
-    else:
-        print('El elemento no existe')
+    login = driver.find_element("xpath", value='//android.widget.Button[@text="Iniciar sesión con correo electrónico y contraseña"]')
+
+    actions = TouchAction(driver)
+
+    actions.tap(login).perform()
+    sleep(5)
+    #if login:             #//android.view.View[@resource-id="guided-phone-form"]/android.view.View[1]
+        #print('Se ha encontrado el elemento de logueo')
+        #login.click()
+    #else:
+        #print('El elemento no existe')
 
     #login = driver.find_element("xpath", "//*[@resource-id='login']")
 
@@ -49,8 +55,3 @@ def log_in():
 
 interface = LoginApp(log_in, lambda: None)
 interface.start()
-
-
-
-#//android.widget.Button[@text="Iniciar sesión con correo electrónico y contraseña"]
-#//android.view.View[@resource-id="guided-phone-form"]/android.view.View[3]
