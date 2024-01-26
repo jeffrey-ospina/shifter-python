@@ -5,49 +5,50 @@ from appium.webdriver.common.touch_action import TouchAction
 
 # Ejecucion principal del codigo
 def open_app():
-    # Iniciar la aplicación
-    driver = start_app()  
+    # Abrir la aplicación
+    driver = start_app()
 
-    #try:
-    sleep(8)
-    #inciar = driver.find_element("id", value="com.doordash.driverapp:id/sign_in")
-    inciar = driver.find_element("xpath", value='//android.widget.TextView[@resource-id="com.doordash.driverapp:id/textView_prism_button_title" and @text="Iniciar sesión"]')
-    if inciar:
-        print('Se ha iniciado correctamente')
-        inciar.click()
-    else:
-        print('No se pudo iniciar la sesión')
-    
-    sleep(14)
-    login = driver.find_element("xpath", value='//android.widget.Button[@text="Iniciar sesión con correo electrónico y contraseña"]')
+    # Pulsar boton de iniciar sesion
+    sleep(15)
+    try: 
+        driver.find_element("xpath", value='//android.widget.TextView[@resource-id="com.doordash.driverapp:id/textView_prism_button_title" and @text="Iniciar sesión"]').click()
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")
 
+    # Pulsar iniciar sesion con correo y contraseña
+    sleep(15)
     actions = TouchAction(driver)
+    #actions.tap(x=471, y=897).wait(15000).tap(x=285, y=577).perform()
+    actions.tap(x=471, y=897).perform()
 
-    actions.tap(login).perform()
-    sleep(5)
-    #if login:             #//android.view.View[@resource-id="guided-phone-form"]/android.view.View[1]
-        #print('Se ha encontrado el elemento de logueo')
-        #login.click()
-    #else:
-        #print('El elemento no existe')
+    sleep(15)
+    # Escribir el correo
+    correo = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-2"]')
+    if correo:
+        print('Se ingresa el correo')
+        correo.send_keys("jeffreyospina17@gmail.com")
+    else:
+        print('El elemento no existe')
 
-    #login = driver.find_element("xpath", "//*[@resource-id='login']")
+    sleep(7)
+    # Escribir la clave
+    clave = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-3"]')
+    if clave:
+        print('Se ingresa la clave')
+        clave.send_keys("holamundo123")
+    else:
+        print('El elemento no existe')
+        
+    sleep(7)
+    # Iniciar sesion
+    login = driver.find_element("xpath", value='//android.widget.Button[@resource-id="login-submit-button"]')
+    if login:
+        print('Se inicia sesion')
+        login.click()
+    else:
+        print('El elemento no existe')
 
-    #driver.find_element('xpath', value='//android.widget.TextView[@resource-id=\"com.doordash.driverapp:id/textView_prism_button_title\" and @text=\"Iniciar sesión\"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"com.doordash.driverapp:id/guided-phone-form\"]/android.view.View[2]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.view.View[2]').click()
-    #driver.find_element('xpath', value='//android.widget.EditText[@resource-id="FieldWrapper-1"]').click()
-    #driver.find_element("xpath", value='//android.widget.ImageButton[@content-desc="Navegar hacia arriba"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"/android.widget.TextView/android.widget.Button and @text=\"Iniciar sesión con correo electrónico y contraseña\"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id=\"guided-phone-form\"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
-    #driver.find_element("xpath", value='//android.view.View[@resource-id="guided-phone-form"]/android.widget.TextView/android.widget.Button and @text="Iniciar sesión con correo electrónico y contraseña').click()
-    #driver.find_element('xpath', value='//android.widget.Button[@text="Continue"]').click()
-    #driver.find_element('xpath', value='//android.view.View[@resource-id="guided-phone-form"]/android.view.View[3]').click()
-
-    #except Exception as e:
-        # Si ocurre algún error, captura la excepción e imprime un mensaje
-        #print(f"Ocurrió un error: {e}")
+   
 
 # Función para la ejecucion del codigo
 def log_in():
