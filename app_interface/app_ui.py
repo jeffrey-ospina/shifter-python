@@ -45,21 +45,22 @@ class LoginApp:
                             padx=15,
                             pady=5,
                             ipadx=10)
-
-# Boton salir
-        #self.stop_button = ctk.CTkButton(self.app,
-                                        #text="Salir",
-                                        #text_color="white",
-                                        #hover_color="#ff6363",
-                                        #fg_color="#ff0000",
-                                        #width=50,
-                                        #border_width=1,
-                                        #command=log_out)
-        #self.stop_button.grid(column=1,
-                            #row=1,
-                            #padx=15,
-                            #pady=5,
-                            #ipadx=10,)
+        
+        # Boton de ingresar PRUEBA
+        self.start_button = ctk.CTkButton(self.app,
+                                        text="Imprimir",
+                                        text_color="white",
+                                        hover_color="#45c451",
+                                        fg_color="#2ea63a",
+                                        width=50,
+                                        border_width=1,
+                                        command=self.get_credentials)
+        self.start_button.grid(column=1,
+                            row=2,
+                            #sticky=ctk.E,
+                            padx=15,
+                            pady=5,
+                            ipadx=10)
 
 # Menu desplegable
         self.option_menu = ctk.CTkOptionMenu(self.app,
@@ -90,6 +91,7 @@ class LoginApp:
         password = self.password_entry.get()
         print("Correo", email)
         print("Clave", password)
+        #return email, password
 
     # Funcion para la apertura de la ventana
     def start(self):

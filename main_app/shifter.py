@@ -3,6 +3,13 @@ from app_interface.app_ui import LoginApp
 from app_run.app_handler import start_app
 from appium.webdriver.common.touch_action import TouchAction
 
+def datos():
+    interfaz_instancia = LoginApp(None)
+
+    email, password = interfaz_instancia.get_credentials()
+
+    return email, password
+
 # Ejecucion principal del codigo
 def open_app():
     # Abrir la aplicación
@@ -16,39 +23,37 @@ def open_app():
         print(f"Ocurrió un error: {e}")
 
     # Pulsar iniciar sesion con correo y contraseña
-    sleep(15)
     actions = TouchAction(driver)
-    #actions.tap(x=471, y=897).wait(15000).tap(x=285, y=577).perform()
-    actions.tap(x=471, y=897).perform()
-
     sleep(15)
+    #actions.tap(x=471, y=897).wait(15000).tap(x=285, y=577).perform()
+    try:
+        actions.tap(x=471, y=897).perform()
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")    
+
     # Escribir el correo
-    correo = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-2"]')
-    if correo:
-        print('Se ingresa el correo')
+    sleep(15)
+    try:
+        correo = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-2"]')
         correo.send_keys("jeffreyospina17@gmail.com")
-    else:
-        print('El elemento no existe')
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")         
 
-    sleep(7)
     # Escribir la clave
-    clave = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-3"]')
-    if clave:
-        print('Se ingresa la clave')
-        clave.send_keys("holamundo123")
-    else:
-        print('El elemento no existe')
-        
     sleep(7)
-    # Iniciar sesion
-    login = driver.find_element("xpath", value='//android.widget.Button[@resource-id="login-submit-button"]')
-    if login:
-        print('Se inicia sesion')
-        login.click()
-    else:
-        print('El elemento no existe')
+    try:
+        clave = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-3"]')
+        #sleep(5)
+        clave.send_keys("holamundo123")
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")
 
-   
+    # Iniciar sesion
+    sleep(7)
+    try:
+        driver.find_element("xpath", value='//android.widget.Button[@resource-id="login-submit-button"]').click()
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")        
 
 # Función para la ejecucion del codigo
 def log_in():
