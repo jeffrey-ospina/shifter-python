@@ -3,13 +3,6 @@ from app_interface.app_ui import LoginApp
 from app_run.app_handler import start_app
 from appium.webdriver.common.touch_action import TouchAction
 
-def datos():
-    interfaz_instancia = LoginApp(None)
-
-    email, password = interfaz_instancia.get_credentials()
-
-    return email, password
-
 # Ejecucion principal del codigo
 def open_app():
     # Abrir la aplicación
@@ -44,7 +37,7 @@ def open_app():
     try:
         clave = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-3"]')
         #sleep(5)
-        clave.send_keys("holamundo123")
+        clave.send_keys("123456")
     except Exception as e:
         print(f"Ocurrió un error: {e}")
 
@@ -53,7 +46,7 @@ def open_app():
     try:
         driver.find_element("xpath", value='//android.widget.Button[@resource-id="login-submit-button"]').click()
     except Exception as e:
-        print(f"Ocurrió un error: {e}")        
+        print(f"Ocurrió un error: {e}")
 
 # Función para la ejecucion del codigo
 def log_in():
@@ -61,3 +54,4 @@ def log_in():
 
 interface = LoginApp(log_in, lambda: None)
 interface.start()
+

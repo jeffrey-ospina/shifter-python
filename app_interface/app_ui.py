@@ -54,7 +54,7 @@ class LoginApp:
                                         fg_color="#2ea63a",
                                         width=50,
                                         border_width=1,
-                                        command=self.get_credentials)
+                                        command=None)
         self.start_button.grid(column=1,
                             row=2,
                             #sticky=ctk.E,
@@ -86,12 +86,9 @@ class LoginApp:
                         ipadx=10)
 
     # Obtener valores ingresados
-    def get_credentials(self):
-        email = self.email_entry.get()
-        password = self.password_entry.get()
-        print("Correo", email)
-        print("Clave", password)
-        #return email, password
+    def credentials(self):
+        self.email_value = self.email_entry.get()
+        self.password_value = self.password_entry.get()
 
     # Funcion para la apertura de la ventana
     def start(self):
