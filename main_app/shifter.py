@@ -27,22 +27,21 @@ def open_app():
     # Escribir el correo
     sleep(15)
     try:
-        correo = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-2"]')
+        correo = driver.find_element("xpath", value='//android.webkit.WebView[@text="DoorDash Login"]/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.widget.EditText')
         correo.send_keys("jeffreyospina17@gmail.com")
     except Exception as e:
         print(f"Ocurrió un error: {e}")         
 
     # Escribir la clave
-    sleep(7)
+    sleep(12)
     try:
         clave = driver.find_element("xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-3"]')
-        #sleep(5)
-        clave.send_keys("123456")
+        clave.send_keys("123456") 
     except Exception as e:
         print(f"Ocurrió un error: {e}")
 
     # Iniciar sesion
-    sleep(7)
+    sleep(12)
     try:
         driver.find_element("xpath", value='//android.widget.Button[@resource-id="login-submit-button"]').click()
     except Exception as e:

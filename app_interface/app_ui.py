@@ -1,95 +1,64 @@
-import customtkinter as ctk
+import tkinter as tk
+from tkinter import ttk
+from tkinter import *
+from tkcalendar import DateEntry
+from babel.numbers import *
 
-# Escoger el color de la ventana para GUI - dark, light o system para color segun el SO
-ctk.set_appearance_mode("light")
-
-# Escoger el color del tema de la ventana
-ctk.set_default_color_theme("blue")
-
-# Crear ventana con botón para iniciar y detener la calculadora
 class LoginApp:
-    def __init__(self, log_in, log_out):
-        self.app = ctk.CTk()
-        self.app.title("Shifter App")
-        self.app.resizable(False, False)
-        self.app.iconbitmap('C:\\Users\\user\\Documents\\shifter-python\\assets\\smartphone.ico')
+        def __init__(self, log_in, log_out):
+                # Instancia principal de la ventana
+                self.app = tk.Tk()
 
-# Entry para ingresar el correo
-        self.email_entry= ctk.CTkEntry(self.app, placeholder_text="Correo")
-        self.email_entry.grid(column=0,
-                            row=0,
-                            padx=15,
-                            pady=5,
-                            ipadx=10)
+                # Se declara el tamaño de la ventana
+                height = 270
+                width = 270
+                x = (self.app.winfo_screenwidth()//2)-(width//2)
+                y = (self.app.winfo_screenheight()//2)-(height//2)
+                self.app.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+                self.app.resizable(False, False)
 
-# Entry para ingresar la clave
-        self.password_entry= ctk.CTkEntry(self.app, placeholder_text="Clave")
-        self.password_entry.grid(column=0,
-                                row=1,
-                                padx=15,
-                                pady=5,
-                                ipadx=10)
+                self.app.columnconfigure(0, weight=2)
+                self.app.columnconfigure(1, weight=1)
 
-# Boton de ingresar
-        self.start_button = ctk.CTkButton(self.app,
-                                        text="Ingresar",
-                                        text_color="white",
-                                        hover_color="#45c451",
-                                        fg_color="#2ea63a",
-                                        width=50,
-                                        border_width=1,
-                                        command=log_in)
-        self.start_button.grid(column=1,
-                            row=3,
-                            #sticky=ctk.E,
-                            padx=15,
-                            pady=5,
-                            ipadx=10)
-        
-        # Boton de ingresar PRUEBA
-        self.start_button = ctk.CTkButton(self.app,
-                                        text="Imprimir",
-                                        text_color="white",
-                                        hover_color="#45c451",
-                                        fg_color="#2ea63a",
-                                        width=50,
-                                        border_width=1,
-                                        command=None)
-        self.start_button.grid(column=1,
-                            row=2,
-                            #sticky=ctk.E,
-                            padx=15,
-                            pady=5,
-                            ipadx=10)
+                # Nombre de ventana
+                self.app.wm_title("Shifter App")  # Modificación aquí
 
-# Menu desplegable
-        self.option_menu = ctk.CTkOptionMenu(self.app,
-                                    values=["Estados Unidos"])
-        self.option_menu.grid(column=0,
-                            row=2,
-                            padx=15,
-                            pady=5,
-                            ipadx=10)
-        self.option_menu.set("Seleccione pais")  # set initial value
+                # Icono de ventana
+                self.app.iconbitmap('C:\\Users\\user\\Documents\\shifter-python\\assets\\smartphone.ico')
 
-# Caja de texto
-        self.textbox = ctk.CTkTextbox(self.app,
-                                    height=80,
-                                    corner_radius=6,
-                                    border_width=1)
-        
-        self.textbox.grid(column=0,
-                        row=4,
-                        columnspan=2,
-                        padx=15,
-                        pady=5,
-                        ipadx=10)
+                # Correo
+                self.email_label = tk.Label(self.app, text= "Correo:", font=("Calibri", 10)).grid(column=0, row=0, sticky="W", padx=20, pady=5)
+                self.email_entry = tk.Entry(self.app, font= ("Calibri", 10)).grid(column=1, row=0, sticky="E", padx=20, pady=5)
 
-    # Obtener valores ingresados
-    def credentials(self):
-        self.email_value = self.email_entry.get()
-        self.password_value = self.password_entry.get()
+                # Clave
+                self.password_label = tk.Label(self.app, text= "Clave:", font=("Calibri", 10)).grid(column=0, row=1, sticky="W", padx=20, pady=5)
+                self.password_entry = tk.Entry(self.app, font= ("Calibri", 10)).grid(column=1, row=1, sticky="E", padx=20, pady=5)
 
-    # Funcion para la apertura de la ventana
-    def start(self):
-        self.app.mainloop()
+                # Lista despegable
+                self.menu = ttk.Combobox(self.app, values=["Seleccione país", "Estados Unidos"], state="readonly", font=("Calibri", 10))
+                self.menu.current(0)
+                self.menu.grid(row=2, columnspan=3, sticky="EW", padx= 20, pady=5)
+
+                # Fecha
+                cal = DateEntry(self.app, locale="es_US", date_pattern="dd-mm-yy", width= 10, background= "darkblue", foreground= "white", borderwidth=2, showweeknumbers=False, firstweekday="monday")
+                cal.grid(column= 0, columnspan=3, row=3, sticky="EW", padx=20, pady=5)
+
+                # Ingreso de hora
+                self.hora_label = tk.Label(self.app, text="Hora: (H:M)", font=("Calibri", 10)).grid(column=0, row=4, sticky="W", padx=15, ipadx=20, pady=5)
+                self.hora_entry = tk.Entry(self.app, width=15, font= ("Calibri", 10)).grid(column=1, row=4, sticky="NS", padx=20, pady=5)
+
+                # Caja de texto
+                text = Text(self.app, height=3)
+                text.grid(column=0, columnspan=3, row=6, sticky="EW", padx=20, pady=5)
+
+                # Boton de ingreso
+                login_button = tk.Button(self.app, 
+                        text="Ingresar",
+                        font=("Calibri", 10),
+                        fg='white', 
+                        bg='green',
+                        command=log_in 
+                        ).grid(column=0, columnspan=3, row=7, sticky="NS", pady=10)
+
+        def start(self):
+                self.app.mainloop()
