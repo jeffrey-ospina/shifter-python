@@ -1,5 +1,13 @@
 /env
-/build
-/dist
-/*spec
+build
+dist/
+*.spec
 __init__.cpython-311.pyc
+.vscode
+.idea
+__pycache__
+prueba-app_ui.py
+prueba-2.py
+codigo-shifter.py
+codigo-app_ui.py
+app_ui_2.py
