@@ -1,11 +1,10 @@
 from app_interface.app_ui import LoginApp
 from app_run.app_handler import start_app
+from appium.webdriver.common.touch_action import TouchAction
 from time import sleep
 
 
 def open_app():
-    # email = app.get_email()
-    # password = app.get_password()
 
     # Abrir la aplicación
     driver = start_app()
@@ -21,12 +20,11 @@ def open_app():
         print(f"Ocurrió un error: {e}")
 
     # Iniciar sesion con correo electronico
+    actions = TouchAction(driver)
     sleep(21)
     try:
-        driver.find_element(
-            "xpath",
-            value='//android.widget.Button[@text="Log in with email and password"]',
-        ).click()
+        actions.tap(x=471, y=897).perform()
+        # driver.find_element("xpath", value='//android.widget.Button[@text="Log in with email and password"]',).click()
     except Exception as e:
         print(f"Ocurrió un error: {e}")
 
@@ -36,7 +34,7 @@ def open_app():
         correo = driver.find_element(
             "xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-2"]'
         )
-        correo.send_keys()  # Utilizamos el método para obtener el correo electrónico
+        correo.send_keys("email@example.com")
     except Exception as e:
         print(f"Ocurrió un error: {e}")
 
@@ -46,7 +44,7 @@ def open_app():
         clave = driver.find_element(
             "xpath", value='//android.widget.EditText[@resource-id="FieldWrapper-3"]'
         )
-        clave.send_keys()  # Utilizamos el método para obtener la contraseña
+        clave.send_keys("password123")
     except Exception as e:
         print(f"Ocurrió un error: {e}")
 
@@ -63,6 +61,5 @@ def open_app():
 # def log_in():
 # Función para iniciar sesión, se llama al hacer clic en el botón
 # open_app()
-
 
 LoginApp(open_app)

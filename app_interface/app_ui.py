@@ -3,7 +3,7 @@ from tkinter import Tk, Label, Entry, OptionMenu, StringVar, Text, Button
 from babel.numbers import *
 
 
-class LoginApp:
+class LoginApp(Tk):
     def __init__(self, log_in):
 
         # Inicialización de la ventana principal de la aplicación
@@ -68,8 +68,8 @@ class LoginApp:
         self.hora_entry.grid(column=1, row=4, sticky="NS", padx=20, pady=5)
 
         # Caja de texto
-        text = Text(app, height=3)
-        text.grid(column=0, columnspan=3, row=6, sticky="EW", padx=20, pady=5)
+        self.text = Text(app, height=3)
+        self.text.grid(column=0, columnspan=3, row=6, sticky="EW", padx=20, pady=5)
 
         # Botón de ingreso
         self.login_button = Button(
@@ -84,24 +84,3 @@ class LoginApp:
 
         # Método para iniciar el bucle principal de la aplicación
         app.mainloop()
-
-    # def get_data(self):
-    ## Extrae los datos introducidos por el usuario y devuelve una tupla con ellos
-    # fecha_str = self.calendar.get()
-    # hora_str = self.hora_entry.get().replace(":", "")
-    # return fecha_str + " " + hora_str
-
-    def on_login_button_click(correito):
-        # Obtener los datos ingresados por el usuario
-        # self.email = self.email_entry.get()
-        # self.password = self.password_entry.get()
-
-        print(correito)
-
-    def get_email(self):
-        # Método para obtener el correo electrónico ingresado
-        return self.email
-
-    def get_password(self):
-        # Método para obtener la contraseña ingresada
-        return self.password
